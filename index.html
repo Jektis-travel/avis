@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jektis Travel — Votre avis compte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #071f3a;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .page {
+      background: #0a3d6b;
+      width: 100%;
+      max-width: 430px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 3rem;
+    }
+
+    .page::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(30,120,200,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(0,40,120,0.4) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Cover ── */
+    .cover {
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      border-bottom: 3px solid rgba(255,255,255,0.12);
+    }
+    .cover img {
+      width: 100%;
+      display: block;
+      max-height: 230px;
+      object-fit: cover;
+    }
+
+    /* ── Stars ── */
+    .stars {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin: 1.6rem 0 0.6rem;
+      position: relative;
+      z-index: 1;
+    }
+    .star {
+      color: #FFD700;
+      font-size: 26px;
+      line-height: 1;
+      filter: drop-shadow(0 2px 6px rgba(255,200,0,0.45));
+    }
+
+    /* ── Title ── */
+    .title-block {
+      text-align: center;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .title-main {
+      color: #ffffff;
+      font-size: 23px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.3px;
+    }
+    .title-sub {
+      color: rgba(190,220,255,0.8);
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    .divider {
+      width: 50px;
+      height: 3px;
+      background: #1e88e5;
+      border-radius: 2px;
+      margin: 1.2rem auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Agency label ── */
+    .agency-label {
+      text-align: center;
+      color: rgba(170,205,255,0.65);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Buttons ── */
+    .buttons {
+      width: 100%;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 17px 22px;
+      border-radius: 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+    .cta-btn:hover  { transform: translateY(-2px); opacity: 0.93; }
+    .cta-btn:active { transform: scale(0.97); }
+
+    .btn-ariana {
+      background: #ffffff;
+      color: #0a3d6b;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+    }
+    .btn-menzah {
+      background: transparent;
+      color: #ffffff;
+      border: 2px solid rgba(255,255,255,0.75);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    .btn-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .btn-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.2;
+      flex: 1;
+    }
+    .btn-action {
+      font-size: 11px;
+      font-weight: 600;
+      opacity: 0.55;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .btn-name { font-size: 15px; font-weight: 700; }
+    .btn-arrow { font-size: 18px; opacity: 0.4; }
+
+    /* ── Trust strip ── */
+    .trust {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin: 2rem 1.5rem 0;
+      position: relative;
+      z-index: 1;
+    }
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      color: rgba(170,205,255,0.65);
+      font-size: 11px;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .trust-item i { font-size: 22px; color: rgba(140,190,255,0.55); }
+
+    /* ── Footer ── */
+    .footer {
+      margin: 2.2rem 1.5rem 0;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-line {
+      width: 36px;
+      height: 1px;
+      background: rgba(255,255,255,0.18);
+      margin: 0 auto 1rem;
+    }
+    .footer-text {
+      color: rgba(170,205,255,0.5);
+      font-family: 'Lato', sans-serif;
+      font-size: 12.5px;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.65;
+    }
+  </style>
+</head>
+<body>
+  <main class="page" role="main">
+
+    <!-- Cover -->
+    <div class="cover">
+      <!--
+        
+      -->
+          
+    <!-- Stars -->
+    <div class="stars" aria-label="5 étoiles">
+      <span class="star">★</span>
+      <span class="star">★</span>
+      <span class="star">★</span>
+      <span class="star">★</span>
+      <span class="star">★</span>
+    </div>
+
+    <!-- Title -->
+    <div class="title-block">
+      <h1 class="title-main">Votre avis compte pour nous&nbsp;!</h1>
+      <p class="title-sub">
+        Partagez votre expérience et aidez<br>
+        d'autres voyageurs à découvrir Jektis Travel
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Agency label -->
+    <p class="agency-label">Choisissez votre agence</p>
+
+  <div class="buttons">
+  <a href="https://www.google.com/search?q=Jektis+Travel+Ariana+Avis#lrd=0x12fd34b3e5a0b527:0xa9c47d7f44f95d83,3" class="cta-btn btn-ariana">     
+<i class="ti ti-map-pin btn-icon" aria-hidden="true"></i>    <div class="btn-text">
+      <span class="btn-action">Laisser un avis</span>
+      <span class="btn-name">Agence Ariana</span>
+    </div>
+    <i class="ti ti-star btn-arrow" aria-hidden="true"></i>
+  </a>
+
+  <a href="https://search.google.com/local/writereview?placeid=ChIJj6eMOSSz_RIRwtR6i10jFak" class="cta-btn btn-menzah"> 
+    <i class="ti ti-map-pin btn-icon" aria-hidden="true"></i>
+    <div class="btn-text">
+      <span class="btn-action">Laisser un avis</span>
+      <span class="btn-name">Agence Menzah 9</span>
+    </div>
+    <i class="ti ti-star btn-arrow" aria-hidden="true"></i>
+  </a>
+</div>
+    <!-- Trust strip -->
+    <div class="trust">
+      <div class="trust-item">
+        <i class="ti ti-clock" aria-hidden="true"></i>
+        <span>Moins de<br>2 minutes</span>
+      </div>
+      <div class="trust-item">
+        <i class="ti ti-lock" aria-hidden="true"></i>
+        <span>100%<br>sécurisé</span>
+      </div>
+      <div class="trust-item">
+        <i class="ti ti-users" aria-hidden="true"></i>
+        <span>Aide la<br>communauté</span>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-line"></div>
+      <p class="footer-text">Merci d'avoir choisi Jektis Travel pour votre voyage ✈</p>
+    </footer>
+
+  </main>
+</body>
+</html>
